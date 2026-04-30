@@ -27,4 +27,13 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject);
+            Debug.Log("ゲームオーバー");
+        }
+    }
 }
