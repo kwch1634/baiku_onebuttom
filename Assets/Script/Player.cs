@@ -11,11 +11,14 @@ public class Player : MonoBehaviour
     public static float _Xpos;
     Rigidbody rb;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        rb = GetComponent<Rigidbody>();
         transform.Translate(_speed * Time.deltaTime, 0f, 0f);
         _Xpos = transform.position.x;
 
