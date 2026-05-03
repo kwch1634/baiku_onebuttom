@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     //他スクリプトで使う
     public static float _Xpos;
+    public bool _isGround;
+    [SerializeField] private GameObject _gameUI;
     Rigidbody rb;
 
     void Start()
@@ -22,18 +24,25 @@ public class Player : MonoBehaviour
         transform.Translate(_speed * Time.deltaTime, 0f, 0f);
         _Xpos = transform.position.x;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _isGround == true)
         {
             rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            _isGround = false;
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _isGround = true;
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(this.gameObject);
             Debug.Log("ゲームオーバー");
+            _gameUI.SetActive(true);
         }
     }
 }
