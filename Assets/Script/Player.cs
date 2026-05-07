@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public bool _isGround;
     public static bool _isGameOver;
     public static int _score;
-    [SerializeField] private GameObject _gameUI;
+    
     Rigidbody rb;
 
     void Start()
@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
             Debug.Log("ゲームオーバー");
             _isGameOver = true;
-            _gameUI.SetActive(true);
         }
     }
 }

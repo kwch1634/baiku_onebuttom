@@ -15,6 +15,7 @@ public class Button_Script : MonoBehaviour
     {
         Player._isGameOver = false;
         Debug.Log("リセット");
+        Debug.Log("スコアは" + Player._score);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
