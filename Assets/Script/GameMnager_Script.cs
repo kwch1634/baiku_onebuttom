@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class GameMnager_Script : MonoBehaviour
 {
+    [SerializeField] private GameObject _scoreUI;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _scoreUI.SetActive(true);
     }
 
     // Update is called once per frame
