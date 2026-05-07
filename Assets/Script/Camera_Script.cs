@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class Camera_Script : MonoBehaviour
 {
 
     // Update is called once per frame

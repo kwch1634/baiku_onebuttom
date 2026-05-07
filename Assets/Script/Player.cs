@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class Player : MonoBehaviour
     //他スクリプトで使う
     public static float _Xpos;
     public bool _isGround;
+    public static bool _isGameOver;
+    public static int _score;
     [SerializeField] private GameObject _gameUI;
     Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        _isGameOver = false;
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour
     {
         transform.Translate(_speed * Time.deltaTime, 0f, 0f);
         _Xpos = transform.position.x;
+        _score = (int)_Xpos;
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGround == true)
         {
@@ -42,6 +47,7 @@ public class Player : MonoBehaviour
         {
             Destroy(this.gameObject);
             Debug.Log("ゲームオーバー");
+            _isGameOver = true;
             _gameUI.SetActive(true);
         }
     }
