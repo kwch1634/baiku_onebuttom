@@ -1,16 +1,23 @@
+using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class Score_Script : MonoBehaviour
+
+public class Floor : MonoBehaviour
 {
-    public GameObject _scoreText;
+    [SerializeField] private GameObject _floorPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        TMP_Text scoreText = _scoreText.GetComponent<TMP_Text>();
-        scoreText.text = "Score: " + (Player._score * 100).ToString();
+        
     }
 }
