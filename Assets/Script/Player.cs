@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     //他スクリプトで使う
     public static float _Xpos;
     public bool _isGround;
+    public bool _DobleJump = false;
     public static bool _isGameOver;
     public static int _score;
     
@@ -29,11 +30,25 @@ public class Player : MonoBehaviour
         _Xpos = transform.position.x;
         _score = (int)_Xpos;
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) && _isGround == true && _DobleJump == false)
         {
-            rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-            _isGround = false;
+            Jump();
+            _DobleJump = true;
         }
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Space) && _DobleJump == true)
+        {
+            Jump();
+            _DobleJump = false;
+        }
+        */
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _isGround = false;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -41,6 +56,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             _isGround = true;
+            _DobleJump = false;
         }
 
         if (collision.gameObject.CompareTag("Enemy"))
