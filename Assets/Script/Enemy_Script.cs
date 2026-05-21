@@ -28,10 +28,10 @@ public class Enemy_Script : MonoBehaviour
                 if (_CloneDestroyTime > 5f)
                 {
                     GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach (GameObject enemy in existingEnemies)
+                    foreach (GameObject Enemy_prefab in existingEnemies)
                     {
-                        Destroy(enemy);
-                        Debug.Log("敵削除: " + enemy.transform.position.x);
+                        Destroy(Enemy_prefab);
+                        Debug.Log("敵削除: " + Enemy_prefab.transform.position.x);
                     }
                 }
 
